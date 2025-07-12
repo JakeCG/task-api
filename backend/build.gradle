@@ -184,7 +184,7 @@ dependencies {
   testImplementation group: 'com.h2database', name: 'h2'
 }
 
-mainClassName = 'uk.gov.hmcts.reform.taskmanagement.Application'
+mainClassName = 'uk.gov.hmcts.reform.dev.Application'
 
 bootJar {
   archiveFileName = "task-management-backend.jar"
