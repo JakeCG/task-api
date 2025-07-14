@@ -60,7 +60,9 @@ public class TaskResponse {
     )
     private Instant updatedAt;
 
-    public static TaskResponse fromEntity(Task task) {
+    public static TaskResponse fromEntity(
+        Task task
+    ) {
         return TaskResponse.builder()
             .id(task.getId())
             .title(task.getTitle())

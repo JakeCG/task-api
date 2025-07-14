@@ -21,7 +21,9 @@ public class TaskServiceImplementation implements TaskService {
     private final TaskRepository taskRepository;
 
     @Override
-    public TaskResponse createTask(TaskRequest request) {
+    public TaskResponse createTask(
+        TaskRequest request
+    ) {
         Task task = Task.builder()
             .title(request.getTitle())
             .description(request.getDescription())
@@ -36,7 +38,9 @@ public class TaskServiceImplementation implements TaskService {
 
     @Override
     @Transactional(readOnly = true)
-    public TaskResponse getTaskById(Long id) {
+    public TaskResponse getTaskById(
+        Long id
+    ) {
         Task task = taskRepository.findById(id)
             .orElseThrow(() -> new TaskNotFoundException("Task not found with id: " + id));
 
@@ -45,7 +49,8 @@ public class TaskServiceImplementation implements TaskService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<TaskResponse> getAllTasks() {
+    public List<TaskResponse> getAllTasks(
+    ) {
         return taskRepository.findAllByOrderCreatedAt()
             .stream()
             .map(TaskResponse::fromEntity)
@@ -53,7 +58,10 @@ public class TaskServiceImplementation implements TaskService {
     }
 
     @Override
-    public TaskResponse updateTaskStatus(Long id, Task.TaskStatus status) {
+    public TaskResponse updateTaskStatus(
+        Long id,
+        Task.TaskStatus status
+    ) {
         Task task = taskRepository.findById(id)
             .orElseThrow(() -> new TaskNotFoundException("Task not found with id: " + id));
 
@@ -65,7 +73,10 @@ public class TaskServiceImplementation implements TaskService {
     }
 
     @Override
-    public TaskResponse updateTask(Long id, TaskRequest request) {
+    public TaskResponse updateTask(
+        Long id,
+        TaskRequest request
+    ) {
         Task task = taskRepository.findById(id)
             .orElseThrow(() -> new TaskNotFoundException("Task not found with id: " + id));
 
@@ -81,7 +92,9 @@ public class TaskServiceImplementation implements TaskService {
     }
 
     @Override
-    public void deleteTask(Long id) {
+    public void deleteTask(
+        Long id
+    ) {
         if (!taskRepository.existsById(id)) {
             throw new TaskNotFoundException("Task not found with id: " + id);
         }

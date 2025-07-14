@@ -44,7 +44,7 @@ spring:
       show-sql: false
 
     flyway:
-      enabled: true
+      enabled: false
       baseline-on-migrate: true
       locations: classpath:db/migration
 
@@ -59,3 +59,6 @@ spring:
       uk.gov.hmcts.reform: DEBUG
       org.springframework.web: INFO
       org.hibernate.SQL: DEBUG
+
+cors:
+  allowed-origins: ${ALLOWED_ORIGINS:http://localhost:3000}
