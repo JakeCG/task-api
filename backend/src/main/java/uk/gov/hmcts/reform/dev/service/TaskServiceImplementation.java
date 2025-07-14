@@ -11,13 +11,12 @@ import uk.gov.hmcts.reform.dev.exception.TaskNotFoundException;
 import uk.gov.hmcts.reform.dev.repository.TaskRepository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
 @Transactional
-public class TaskServiceImplementation implements TaskService{
+public class TaskServiceImplementation implements TaskService {
 
     private final TaskRepository taskRepository;
 
@@ -50,7 +49,7 @@ public class TaskServiceImplementation implements TaskService{
         return taskRepository.findAllByOrderCreatedAt()
             .stream()
             .map(TaskResponse::fromEntity)
-            .collect(Collectors.toList());
+            .toList();
     }
 
     @Override

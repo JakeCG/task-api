@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.dev.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,13 +14,50 @@ import java.time.Instant;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Schema(description = "Response object containing task details")
 public class TaskResponse {
+    @Schema(
+        description = "Unique identifier of the task",
+        example = "1"
+    )
     private Long id;
+
+    @Schema(
+        description = "The title of the task",
+        example = "Review case documents"
+    )
     private String title;
+
+    @Schema(
+        description = "Detailed description of the task",
+        example = "Review all submitted documents for case #12345 and ensure compliance with regulations",
+        nullable = true
+    )
     private String description;
+
+    @Schema(
+        description = "Current status of the task",
+        example = "IN_PROGRESS"
+    )
     private TaskStatus taskStatus;
+
+    @Schema(
+        description = "Due date and time for the task",
+        example = "2024-12-31T17:00:00Z",
+        nullable = true
+    )
     private Instant dueDateTime;
+
+    @Schema(
+        description = "Timestamp when the task was created",
+        example = "2024-12-31T17:00:00Z"
+    )
     private Instant createdAt;
+
+    @Schema(
+        description = "Timestamp when the task was last updated",
+        example = "2024-12-31T17:00:00Z"
+    )
     private Instant updatedAt;
 
     public static TaskResponse fromEntity(Task task) {
