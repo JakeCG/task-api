@@ -6,9 +6,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = "uk.gov.hmcts.reform.dev.repository")
-@SuppressWarnings("HideUtilityClassConstructor") // Spring needs a constructor, its not a utility class
 public class Application {
-
     public static void main(final String[] args) {
         SpringApplication.run(Application.class, args);
     }
