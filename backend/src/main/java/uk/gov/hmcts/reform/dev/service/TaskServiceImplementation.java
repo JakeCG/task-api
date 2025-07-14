@@ -51,7 +51,7 @@ public class TaskServiceImplementation implements TaskService {
     @Transactional(readOnly = true)
     public List<TaskResponse> getAllTasks(
     ) {
-        return taskRepository.findAllByOrderCreatedAt()
+        return taskRepository.findAllByOrderByCreatedAtAsc()
             .stream()
             .map(TaskResponse::fromEntity)
             .toList();
