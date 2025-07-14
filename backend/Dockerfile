@@ -1,11 +1,26 @@
-FROM amazoncorretto:21-alpine
+# Build stage
+FROM amazoncorretto:21-alpine AS builder
 
 WORKDIR /app
 
-# Copy the jar file
-COPY build/libs/task-management-backend.jar app.jar
+COPY gradle/ gradle/
+COPY gradlew build.gradle ./
 
-# Create non-root user
+RUN chmod +x ./gradlew
+
+RUN ./gradlew dependencies --no-daemon
+
+COPY src/ src/
+
+RUN ./gradlew build --no-daemon -x test
+
+# Runtime stage
+FROM amazoncorretto:21-alpine AS runtime
+
+WORKDIR /app
+
+COPY --from=builder /app/build/libs/task-management-backend.jar app.jar
+
 RUN addgroup -g 1000 spring && \
     adduser -u 1000 -G spring -s /bin/sh -D spring
 

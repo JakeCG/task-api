@@ -65,11 +65,7 @@ public class TaskController {
             ),
         @ApiResponse(
             responseCode = "500",
-            description = "Internal server error",
-            content = @Content(
-                mediaType = APPLICATION_JSON_VALUE,
-                schema = @Schema(implementation = ProblemDetail.class)
-                )
+            description = "Internal server error"
             )
     })
     @PostMapping(
@@ -101,19 +97,11 @@ public class TaskController {
             ),
         @ApiResponse(
                 responseCode = "404",
-                description = "Task not found",
-                content = @Content(
-                    mediaType = APPLICATION_JSON_VALUE,
-                    schema = @Schema(implementation = ProblemDetail.class)
-                )
+                description = "Task not found"
             ),
         @ApiResponse(
                 responseCode = "500",
-                description = "Internal server error",
-                content = @Content(
-                    mediaType = APPLICATION_JSON_VALUE,
-                    schema = @Schema(implementation = ProblemDetail.class)
-                )
+                description = "Internal server error"
             )
     })
     @GetMapping(
@@ -144,11 +132,7 @@ public class TaskController {
             ),
         @ApiResponse(
                 responseCode = "500",
-                description = "Internal server error",
-                content = @Content(
-                    mediaType = APPLICATION_JSON_VALUE,
-                    schema = @Schema(implementation = ProblemDetail.class)
-                )
+                description = "Internal server error"
             )
     })
     @GetMapping(value = "/get-all-tasks", produces = APPLICATION_JSON_VALUE)
@@ -181,11 +165,7 @@ public class TaskController {
             ),
         @ApiResponse(
                 responseCode = "404",
-                description = "Task not found",
-                content = @Content(
-                    mediaType = APPLICATION_JSON_VALUE,
-                    schema = @Schema(implementation = ProblemDetail.class)
-                )
+                description = "Task not found"
             ),
         @ApiResponse(
                 responseCode = "500",
@@ -235,19 +215,11 @@ public class TaskController {
             ),
         @ApiResponse(
                 responseCode = "404",
-                description = "Task not found",
-                content = @Content(
-                    mediaType = APPLICATION_JSON_VALUE,
-                    schema = @Schema(implementation = ProblemDetail.class)
-                )
+                description = "Task not found"
             ),
         @ApiResponse(
                 responseCode = "500",
-                description = "Internal server error",
-                content = @Content(
-                    mediaType = APPLICATION_JSON_VALUE,
-                    schema = @Schema(implementation = ProblemDetail.class)
-                )
+                description = "Internal server error"
             )
     })
     @PutMapping(
@@ -277,19 +249,11 @@ public class TaskController {
             ),
         @ApiResponse(
                 responseCode = "404",
-                description = "Task not found",
-                content = @Content(
-                    mediaType = APPLICATION_JSON_VALUE,
-                    schema = @Schema(implementation = ProblemDetail.class)
-                )
+                description = "Task not found"
             ),
         @ApiResponse(
                 responseCode = "500",
-                description = "Internal server error",
-                content = @Content(
-                    mediaType = APPLICATION_JSON_VALUE,
-                    schema = @Schema(implementation = ProblemDetail.class)
-                )
+                description = "Internal server error"
             )
     })
     @DeleteMapping("/{id}/delete-task")
