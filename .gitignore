@@ -27,3 +27,4 @@ applicationinsights-agent-*.jar
 /frontend/.yarn/
 /frontend/.pnp.cjs
 /frontend/.pnp.loader.mjs
+/frontend/node_modules/

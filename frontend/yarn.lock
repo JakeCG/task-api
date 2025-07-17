@@ -3412,6 +3412,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/axios@npm:^0.14.4":
+  version: 0.14.4
+  resolution: "@types/axios@npm:0.14.4"
+  dependencies:
+    axios: "*"
+  checksum: 51defed1e76e3fa7e63ae999c2e8c7c253be9b1a1fa3006f4413a0c461234a7e9e7e5df1bb2f64be221617fa94ed2272345ef19724dd550ad01a090510714275
+  languageName: node
+  linkType: hard
+
 "@types/babel__core@npm:^7.1.14":
   version: 7.20.5
   resolution: "@types/babel__core@npm:7.20.5"
@@ -4732,7 +4741,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.4.0":
+"axios@npm:*, axios@npm:^1.4.0":
   version: 1.10.0
   resolution: "axios@npm:1.10.0"
   dependencies:
@@ -7349,6 +7358,7 @@ __metadata:
     "@hmcts/info-provider": ^1.1.0
     "@hmcts/nodejs-healthcheck": ^1.8.0
     "@hmcts/properties-volume": ^1.0.0
+    "@types/axios": ^0.14.4
     "@types/body-parser": ^1.19.2
     "@types/chai-as-promised": ^7.1.5
     "@types/config": ^3.3.0
