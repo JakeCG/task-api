@@ -24,3 +24,6 @@ bin/main/application.yaml
 applicationinsights-agent-*.jar
 *.log
 /backend/build/
+/frontend/.yarn/
+/frontend/.pnp.cjs
+/frontend/.pnp.loader.mjs
