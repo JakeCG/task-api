@@ -10,8 +10,8 @@ export class TaskService {
       baseURL: process.env.API_BASE_URL || 'http://backend:8080/api',
       timeout: 1000,
       headers: {
-        'Content-Type': 'application/json'
-      }
+        'Content-Type': 'application/json',
+      },
     });
   }
 

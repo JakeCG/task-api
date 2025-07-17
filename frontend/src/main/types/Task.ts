@@ -19,5 +19,5 @@ export interface TaskRequest {
   title: string;
   description?: string;
   status: TaskStatus;
-  dudeDateTime?: string;
+  dueDateTime?: string;
 }
