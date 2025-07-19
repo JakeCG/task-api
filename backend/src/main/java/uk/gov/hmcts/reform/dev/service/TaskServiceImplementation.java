@@ -27,7 +27,7 @@ public class TaskServiceImplementation implements TaskService {
         Task task = Task.builder()
             .title(request.getTitle())
             .description(request.getDescription())
-            .status(request.getTaskStatus())
+            .status(request.getStatus())
             .dueDateTime(request.getDueDateTime())
             .build();
 
@@ -82,7 +82,7 @@ public class TaskServiceImplementation implements TaskService {
 
         task.setTitle(request.getTitle());
         task.setDescription(request.getDescription());
-        task.setStatus(request.getTaskStatus());
+        task.setStatus(request.getStatus());
         task.setDueDateTime(request.getDueDateTime());
 
         Task updatedTask = taskRepository.save(task);

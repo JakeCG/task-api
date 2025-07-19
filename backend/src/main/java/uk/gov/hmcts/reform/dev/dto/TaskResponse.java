@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import uk.gov.hmcts.reform.dev.entity.Task;
 import uk.gov.hmcts.reform.dev.entity.Task.TaskStatus;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -39,26 +39,26 @@ public class TaskResponse {
         description = "Current status of the task",
         example = "IN_PROGRESS"
     )
-    private TaskStatus taskStatus;
+    private TaskStatus status;
 
     @Schema(
         description = "Due date and time for the task",
         example = "2024-12-31T17:00:00Z",
         nullable = true
     )
-    private Instant dueDateTime;
+    private LocalDateTime dueDateTime;
 
     @Schema(
         description = "Timestamp when the task was created",
         example = "2024-12-31T17:00:00Z"
     )
-    private Instant createdAt;
+    private LocalDateTime createdAt;
 
     @Schema(
         description = "Timestamp when the task was last updated",
         example = "2024-12-31T17:00:00Z"
     )
-    private Instant updatedAt;
+    private LocalDateTime updatedAt;
 
     public static TaskResponse fromEntity(
         Task task
@@ -67,7 +67,7 @@ public class TaskResponse {
             .id(task.getId())
             .title(task.getTitle())
             .description(task.getDescription())
-            .taskStatus(task.getStatus())
+            .status(task.getStatus())
             .dueDateTime(task.getDueDateTime())
             .createdAt(task.getCreatedAt())
             .updatedAt(task.getUpdatedAt())

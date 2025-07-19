@@ -7,44 +7,62 @@ const isDevelopment = process.env.NODE_ENV !== 'production';
 module.exports = {
   mode: isDevelopment ? 'development' : 'production',
   entry: {
-    main: ['./src/main/assets/js/main.ts', './src/main/assets/scss/main.scss'],
+    main: ['./src/main/assets/js/main.ts', './src/main/assets/scss/main.scss']
   },
   output: {
-    path: path.resolve(__dirname, 'dist/assets'),
-    filename: 'js/[name].js',
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'assets/js/[name].js',
+    clean: true
   },
   module: {
     rules: [
       {
         test: /\.ts$/,
         use: 'ts-loader',
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-      },
-    ],
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              url: false  // Don't try to resolve url() in CSS
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sassOptions: {
+                includePaths: [path.resolve(__dirname, 'node_modules')],
+                quietDeps: true
+              }
+            }
+          }
+        ]
+      }
+    ]
   },
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.js']
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
+      filename: 'assets/css/[name].css'
     }),
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: 'node_modules/govuk-frontend/dist/govuk/assets',
-          to: 'images',
+          from: 'node_modules/govuk-frontend/govuk/assets',
+          to: 'assets'  // Copy all assets (fonts, images) to assets folder
         },
         {
-          from: 'node_modules/govuk-frontend/dist/govuk/all.js',
-          to: 'js/govuk.js',
-        },
-      ],
-    }),
+          from: 'node_modules/govuk-frontend/govuk/all.js',
+          to: 'assets/js/govuk.js'
+        }
+      ]
+    })
   ],
-  devtool: isDevelopment ? 'source-map' : false,
+  devtool: isDevelopment ? 'source-map' : false
 };

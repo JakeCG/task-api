@@ -7,9 +7,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import uk.gov.hmcts.reform.dev.entity.Task;
+import uk.gov.hmcts.reform.dev.entity.Task.TaskStatus;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -38,7 +38,7 @@ public class TaskRequest {
         example = "TODO",
         allowableValues = {"TODO", "IN_PROGRESS", "COMPLETED", "CANCELLED"}
     )
-    private Task.TaskStatus taskStatus;
+    private TaskStatus status;
 
     @Schema(
         description = "Due date and time for the task in UTC",
@@ -46,5 +46,5 @@ public class TaskRequest {
         nullable = true,
         pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'"
     )
-    private Instant dueDateTime;
+    private LocalDateTime dueDateTime;
 }

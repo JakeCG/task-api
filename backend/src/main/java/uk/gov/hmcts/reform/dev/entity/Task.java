@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 import static jakarta.persistence.EnumType.STRING;
 import static jakarta.persistence.GenerationType.IDENTITY;
@@ -37,7 +37,7 @@ public class Task {
     private String title;
 
     @Column(columnDefinition = "TEXT")
-    @Schema(description = "Title of the task", example = "Review case documents")
+    @Schema(description = "Description of the task", example = "Review all documents for case #12345")
     private String description;
 
     @Column(nullable = false)
@@ -46,18 +46,18 @@ public class Task {
     private TaskStatus status;
 
     @Column(name = "due_date_time")
-    @Schema(description = "Due date and time for task completion", example = "2024-09-03T15:30:45.123456789Z")
-    private Instant dueDateTime;
+    @Schema(description = "Due date and time for task completion", example = "2024-09-03T15:30:45")
+    private LocalDateTime dueDateTime;
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
-    @Schema(description = "Timestamp when the task was created", example = "2024-09-03T15:30:45.123456789Z")
-    private Instant createdAt;
+    @Schema(description = "Timestamp when the task was created", example = "2024-09-03T15:30:45")
+    private LocalDateTime createdAt;
 
     @UpdateTimestamp
     @Column(name = "updated_at")
-    @Schema(description = "Timestamp when the task was last updated", example = "2024-09-03T15:30:45.123456789Z")
-    private Instant updatedAt;
+    @Schema(description = "Timestamp when the task was last updated", example = "2024-09-03T15:30:45")
+    private LocalDateTime updatedAt;
 
     @Schema(description = "Possible status values for a task")
     public enum TaskStatus {

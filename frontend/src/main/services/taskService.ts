@@ -1,13 +1,13 @@
 import axios, { AxiosInstance } from 'axios';
 
-import { Task, TaskRequest, TaskStatus } from '../types/Task';
+import { Task, TaskRequest, TaskStatus } from '../types/task';
 
 export class TaskService {
-  private api: AxiosInstance;
+  private readonly api: AxiosInstance;
 
   constructor() {
     this.api = axios.create({
-      baseURL: process.env.API_BASE_URL || 'http://backend:8080/api',
+      baseURL: process.env.API_BASE_URL ?? 'http://backend:8080/api',
       timeout: 1000,
       headers: {
         'Content-Type': 'application/json',

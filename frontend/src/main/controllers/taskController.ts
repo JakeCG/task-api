@@ -1,10 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
 
-import { TaskService } from '../services/TaskService';
-import { TaskStatus } from '../types/Task';
+import { TaskService } from '../services/taskService';
+import { TaskStatus } from '../types/task';
 
 export class TaskController {
-  private taskService: TaskService;
+  private readonly taskService: TaskService;
 
   constructor() {
     this.taskService = new TaskService();
@@ -37,15 +37,18 @@ export class TaskController {
     try {
       const { title, description, status, dueDateTime } = req.body;
 
+      console.log('Creating task with data:', { title, description, status, dueDateTime });
+
       await this.taskService.createTask({
         title,
-        description,
+        description: description || '',
         status,
-        dueDateTime: dueDateTime || undefined,
+        dueDateTime: dueDateTime || undefined
       });
 
       res.redirect('/tasks');
     } catch (error) {
+      console.error('Error in store method:', error);
       next(error);
     }
   }
@@ -72,9 +75,9 @@ export class TaskController {
 
       await this.taskService.updateTask(id, {
         title,
-        description,
+        description: description || '',
         status,
-        dueDateTime: dueDateTime || undefined,
+        dueDateTime: dueDateTime || undefined  // Just pass it as is!
       });
 
       res.redirect('/tasks');

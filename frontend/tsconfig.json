@@ -2,7 +2,11 @@
   "compilerOptions": {
     "target": "ES2021",
     "module": "commonjs",
-    "lib": ["ES2021"],
+    "lib": [
+      "ES2021",
+      "DOM"
+    ],
+    // Add DOM here
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
@@ -25,11 +29,17 @@
     "allowJs": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
-    },
-    "types": ["node"],
-    "typeRoots": ["./node_modules/@types"]
+      "@/*": [
+        "src/*"
+      ]
+    }
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "coverage"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "coverage"
+  ]
 }
