@@ -1,0 +1,34 @@
+@import '~govuk-frontend/govuk/all';
+
+// Custom styles
+.task-status {
+  &--todo {
+    color: $govuk-secondary-text-colour;
+  }
+
+  &--in-progress {
+    color: $govuk-link-colour;
+  }
+
+  &--completed {
+    color: $govuk-success-colour;
+  }
+
+  &--cancelled {
+    color: $govuk-error-colour;
+  }
+}
+
+.govuk-table {
+  .govuk-hint {
+    margin-bottom: 0;
+  }
+}
+
+.govuk-date-input {
+  input[type='datetime-local'] {
+    @extend .govuk-input;
+    width: 100%;
+    max-width: 20em;
+  }
+}

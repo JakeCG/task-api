@@ -1,0 +1,30 @@
+.gradle
+/build/
+!gradle/wrapper/gradle-wrapper.jar
+*.class
+bin/main/application.yaml
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+.idea
+/out
+*.iws
+*.iml
+*.ipr
+
+.DS_Store
+
+applicationinsights-agent-*.jar
+*.log
+/backend/build/
+/frontend/.yarn/
+/frontend/.pnp.cjs
+/frontend/.pnp.loader.mjs
+/frontend/node_modules/

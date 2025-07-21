@@ -1,0 +1,68 @@
+{% extends "layouts/main.njk" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Edit task</h1>
+
+      <form method="POST" action="/tasks/{{ task.id }}/edit">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--l" for="title">
+            Task title
+          </label>
+          <input class="govuk-input" id="title" name="title" type="text" value="{{ task.title }}" required>
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--l" for="description">
+            Description
+          </label>
+          <div id="description-hint" class="govuk-hint">
+            Provide any additional details about the task (optional)
+          </div>
+          <textarea class="govuk-textarea" id="description" name="description" rows="5" aria-describedby="description-hint">{{ task.description }}</textarea>
+        </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              Status
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              {% for status in statuses %}
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="status-{{ loop.index }}" name="status" type="radio" value="{{ status }}" {% if status == task.status %}checked{% endif %}>
+                  <label class="govuk-label govuk-radios__label" for="status-{{ loop.index }}">
+                    {{ status | replace("_", " ") }}
+                  </label>
+                </div>
+              {% endfor %}
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="due-date-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              Due date and time
+            </legend>
+            <div id="due-date-hint" class="govuk-hint">
+              When does this task need to be completed? (optional)
+            </div>
+            <div class="govuk-date-input" id="due-date">
+              <input class="govuk-input" id="dueDateTime" name="dueDateTime" type="datetime-local"
+                    value="{{ task.dueDateTime | slice(0, 16) if task.dueDateTime }}">
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-button-group">
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Update task
+          </button>
+          <a class="govuk-link" href="/tasks">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

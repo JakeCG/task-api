@@ -1,0 +1,32 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: false
+    show-sql: false
+
+  flyway:
+    enabled: false
+
+logging:
+  level:
+    uk.gov.hmcts.reform: INFO
+    org.springframework.web: WARN
+    org.hibernate.SQL: WARN
+    org.testcontainers: INFO
+
+cors:
+  allowed-origins: http://localhost:3000
+
+server:
+  port: 0
+
+management:
+  endpoint:
+    health:
+      group:
+        readiness:
+          include: ""

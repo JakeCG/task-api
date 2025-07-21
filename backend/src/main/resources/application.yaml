@@ -1,0 +1,59 @@
+server:
+  port: 8080
+  shutdown: "graceful"
+
+management:
+  endpoint:
+    health:
+      show-details: "always"
+      group:
+        readiness:
+          include: "db"
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: health,info,metrics
+
+springdoc:
+  packagesToScan: uk.gov.hmcts.reform.dev.controller
+  writer-with-order-by-keys: true
+
+spring:
+  config:
+    import: "optional:configtree:/mnt/secrets/test/"
+  application:
+    name: task-management-backend
+
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:taskdb}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        jdbc:
+          time_zone: UTC
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    locations: classpath:db/migration
+
+logging:
+  level:
+    uk.gov.hmcts.reform: DEBUG
+    org.springframework.web: INFO
+    org.hibernate.SQL: DEBUG
+    org.flywaydb: DEBUG
+
+cors:
+  allowed-origins: ${ALLOWED_ORIGINS:http://localhost:3000}
