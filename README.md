@@ -106,7 +106,7 @@ docker-compose down -v
   - **Frontend**: http://localhost:3000
   - **Backend API**: http://localhost:8080/api
   - **API Documentation**: http://localhost:8080/swagger-ui.html
-  - **OpenAPI Spec**: http://localhost:8080/api-docs
+  - **OpenAPI Spec**: http://localhost:8080/v3/api-docs
 
 ## Development Setup
 
